@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTCfy - Investment Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to BTCfy</h1>
+            <p>Secure your investment with cryptocurrency</p>
+        </header>
+
+        <main>
+            <form id="user-form">
+                <h2>Input Personal Information</h2>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="btc address">Withdrawal Address (BTC only: this is where your earnings will be deposited to)</label>
+                    <input type="text" id="address" name = "address" required>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+
+            <div id="btc-section" class="hidden">
+                <h2>BTC Address for Investment</h2>
+                <p class="btc-address">bc1qst4s0042pw03cvplncwwm6fdq3myet309ruatv</p>
+                <p class="instructions">Please deposit your investment funds to the address above.</p>
+                <button id="confirm-transaction" class="btn">Confirm Transaction</button>
+            </div>
+
+            <div id="confirmation-section" class="hidden">
+                <h2>Transaction Confirmation</h2>
+                <p class="confirmation-message">
+                    Your token and link to your platform will be sent to your email after the transaction is confirmed. (A special platform link will be sent to your email within 3 hours, your profit will be deposit * 10 in 48 hours. Do not share your link or token with any one)
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
