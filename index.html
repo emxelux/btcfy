@@ -1,85 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BTCfy Investment Platform</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTCfy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+    .container {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      height: 40px;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3e8e41;
+    }
+    #instruction {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #btc-address {
+      background-color: #007bff;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    #next-button {
+      margin-top: 20px;
+    }
+    #wait-message {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f7fc;">
-
-    <!-- Registration Section -->
-    <div id="registration" style="display: block; text-align: center; padding: 50px;">
-        <h1 style="color: #007bff;">Welcome to BTCfy</h1>
-        <p style="color: #555;">Please complete your registration:</p>
-        <form action="https://formsubmit.co/emmanuelabbey2004@email.com" method="POST">
-            <input type="text" name="surname" placeholder="Surname" required style="padding: 10px; margin: 10px 0; width: 80%; border: 1px solid #ddd; border-radius: 5px;" /><br>
-            <input type="text" name="firstname" placeholder="First Name" required style="padding: 10px; margin: 10px 0; width: 80%; border: 1px solid #ddd; border-radius: 5px;" /><br>
-            <input type="text" name="lastname" placeholder="Last Name" required style="padding: 10px; margin: 10px 0; width: 80%; border: 1px solid #ddd; border-radius: 5px;" /><br>
-            <input type="email" name="email" placeholder="Email Address" required style="padding: 10px; margin: 10px 0; width: 80%; border: 1px solid #ddd; border-radius: 5px;" /><br>
-            <input type="text" name="address" placeholder="Address" required style="padding: 10px; margin: 10px 0; width: 80%; border: 1px solid #ddd; border-radius: 5px;" /><br>
-            <input type="text" name="phone" placeholder="Phone Number" required style="padding: 10px; margin: 10px 0; width: 80%; border: 1px solid #ddd; border-radius: 5px;" /><br>
-            <button type="button" onclick="showWalletSection()" style="padding: 12px 20px; margin-top: 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Next</button>
-        </form>
+<body>
+  <div class="container">
+    <h1>BTCfy</h1>
+    <form id="user-info">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      <button id="submit-info">Submit Information</button>
+    </form>
+    <div id="btc-address" style="display:none;">
+      <p>Please deposit BTC into wallet:</p>
+      <p style="font-size: 24px; font-weight: bold;">1EUeuw4NwChpFUgAkyig2mTV7SgfBqu4P9</p>
+      <p id="instruction">Make sure you deposit before you click next.</p>
+      <button id="next-button">Next</button>
     </div>
-
-    <!-- BTC Address Section -->
-    <div id="btc_address" style="display: none; text-align: center; padding: 50px;">
-        <h1 style="color: #007bff;">BTCfy Investment - Wallet Address</h1>
-        <p style="color: #555;">Here is where your BTC earnings will be credited to. Make sure you enter the correct address, BTCfy will not be responsible for a wrong BTC address inputted.</p>
-        <form action="https://formsubmit.co/emmanuelabbey2004@email.com" method="POST">
-            <input type="text" name="btc_wallet" placeholder="Enter your BTC Wallet Address" required style="padding: 10px; margin: 10px 0; width: 80%; border: 1px solid #ddd; border-radius: 5px;" /><br>
-            <button type="button" onclick="showInvestmentSection()" style="padding: 12px 20px; margin-top: 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Next</button>
-        </form>
+    <div id="wait-message">
+      Please wait for confirmation...
     </div>
-
-    <!-- Investment Section -->
-    <div id="investment" style="display: none; text-align: center; padding: 50px;">
-        <h1 style="color: #007bff;">BTCfy Investment - Amount</h1>
-        <p style="color: #555;">Enter the amount in Dollars ($) of BTC you'd like to invest.</p>
-        <form action="https://formsubmit.co/emmanuelabbey2004@email.com" method="POST">
-            <input type="number" name="amount" placeholder="Amount in USD" required style="padding: 10px; margin: 10px 0; width: 80%; border: 1px solid #ddd; border-radius: 5px;" /><br>
-            <p style="color: #555;">Deposit to the BTC address: <strong>1EUeuw4NwChpFUgAkyig2mTV7SgfBqu4P9</strong></p>
-            <button type="button" onclick="showTransactionSection()" style="padding: 12px 20px; margin-top: 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Next</button>
-        </form>
-    </div>
-
-    <!-- Transaction ID Section -->
-    <div id="transaction" style="display: none; text-align: center; padding: 50px;">
-        <h1 style="color: #007bff;">BTCfy Investment - Transaction ID</h1>
-        <p style="color: #555;">Please input the TXID (Transaction ID) as proof of transaction.</p>
-        <form action="https://formsubmit.co/emmanuelabbey2004@email.com" method="POST">
-            <input type="text" name="txid" placeholder="Transaction ID" required style="padding: 10px; margin: 10px 0; width: 80%; border: 1px solid #ddd; border-radius: 5px;" /><br>
-            <button type="button" onclick="showConfirmationMessage()" style="padding: 12px 20px; margin-top: 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Next</button>
-        </form>
-    </div>
-
-    <!-- Confirmation Message -->
-    <div id="confirmation" style="display: none; text-align: center; padding: 50px;">
-        <h1 style="color: #007bff;">BTCfy Investment - Confirmation</h1>
-        <p style="color: #555;">Dear BITFYER, your investment is being processed. Your promo ($500) will be deposited into your wallet address once your investment is confirmed. You will also receive an email containing the link to your dashboard. Thank you!</p>
-    </div>
-
-    <script>
-        function showWalletSection() {
-            document.getElementById('registration').style.display = 'none';
-            document.getElementById('btc_address').style.display = 'block';
-        }
-
-        function showInvestmentSection() {
-            document.getElementById('btc_address').style.display = 'none';
-            document.getElementById('investment').style.display = 'block';
-        }
-
-        function showTransactionSection() {
-            document.getElementById('investment').style.display = 'none';
-            document.getElementById('transaction').style.display = 'block';
-        }
-
-        function showConfirmationMessage() {
-            document.getElementById('transaction').style.display = 'none';
-            document.getElementById('confirmation').style.display = 'block';
-        }
-    </script>
-
+  </div>
+  <script>
+    const form = document.getElementById('user-info');
+    const btcAddress = document.getElementById('btc-address');
+    const nextButton = document.getElementById('next-button');
+    const waitMessage = document.getElementById('wait-message');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      form.style.display = 'none';
+      btcAddress.style.display = 'block';
+    });
+    nextButton.addEventListener('click', () => {
+      btcAddress.style.display = 'none';
+      waitMessage.style.display = 'block';
+    });
+  </script>
 </body>
 </html>
